@@ -1,0 +1,376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BCDF2D61ED6D10600E86618 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDF2D51ED6D10600E86618 /* AppDelegate.swift */; };
+		2BCDF2D81ED6D10600E86618 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDF2D71ED6D10600E86618 /* ViewController.swift */; };
+		2BCDF2DB1ED6D10600E86618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2D91ED6D10600E86618 /* Main.storyboard */; };
+		2BCDF2DD1ED6D10600E86618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2DC1ED6D10600E86618 /* Assets.xcassets */; };
+		2BCDF2E01ED6D10600E86618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2DE1ED6D10600E86618 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2BCDF2EC1ED6D17700E86618 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2BCDF2AF1ED6D0AA00E86618;
+			remoteInfo = MapGrid;
+		};
+		2BCDF2EE1ED6D17700E86618 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2BCDF2B81ED6D0AA00E86618;
+			remoteInfo = MapGridTests;
+		};
+		2BCDF2F31ED6D1BB00E86618 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BCDF2AE1ED6D0AA00E86618;
+			remoteInfo = MapGrid;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2BCDF2D21ED6D10600E86618 /* MapGridExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapGridExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BCDF2D51ED6D10600E86618 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2BCDF2D71ED6D10600E86618 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2BCDF2DA1ED6D10600E86618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BCDF2DC1ED6D10600E86618 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BCDF2DF1ED6D10600E86618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BCDF2E11ED6D10600E86618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapGrid.xcodeproj; path = ../MapGrid.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BCDF2CF1ED6D10600E86618 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BCDF2C91ED6D10600E86618 = {
+			isa = PBXGroup;
+			children = (
+				2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */,
+				2BCDF2D41ED6D10600E86618 /* MapGridExample */,
+				2BCDF2D31ED6D10600E86618 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BCDF2D31ED6D10600E86618 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BCDF2D21ED6D10600E86618 /* MapGridExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BCDF2D41ED6D10600E86618 /* MapGridExample */ = {
+			isa = PBXGroup;
+			children = (
+				2BCDF2D51ED6D10600E86618 /* AppDelegate.swift */,
+				2BCDF2D71ED6D10600E86618 /* ViewController.swift */,
+				2BCDF2D91ED6D10600E86618 /* Main.storyboard */,
+				2BCDF2DC1ED6D10600E86618 /* Assets.xcassets */,
+				2BCDF2DE1ED6D10600E86618 /* LaunchScreen.storyboard */,
+				2BCDF2E11ED6D10600E86618 /* Info.plist */,
+			);
+			path = MapGridExample;
+			sourceTree = "<group>";
+		};
+		2BCDF2E81ED6D17700E86618 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BCDF2ED1ED6D17700E86618 /* MapGrid.framework */,
+				2BCDF2EF1ED6D17700E86618 /* MapGridTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BCDF2D11ED6D10600E86618 /* MapGridExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BCDF2E41ED6D10600E86618 /* Build configuration list for PBXNativeTarget "MapGridExample" */;
+			buildPhases = (
+				2BCDF2CE1ED6D10600E86618 /* Sources */,
+				2BCDF2CF1ED6D10600E86618 /* Frameworks */,
+				2BCDF2D01ED6D10600E86618 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BCDF2F41ED6D1BB00E86618 /* PBXTargetDependency */,
+			);
+			name = MapGridExample;
+			productName = MapGridExample;
+			productReference = 2BCDF2D21ED6D10600E86618 /* MapGridExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BCDF2CA1ED6D10600E86618 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Mikko Välimäki";
+				TargetAttributes = {
+					2BCDF2D11ED6D10600E86618 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2BCDF2CD1ED6D10600E86618 /* Build configuration list for PBXProject "MapGridExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2BCDF2C91ED6D10600E86618;
+			productRefGroup = 2BCDF2D31ED6D10600E86618 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2BCDF2E81ED6D17700E86618 /* Products */;
+					ProjectRef = 2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				2BCDF2D11ED6D10600E86618 /* MapGridExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2BCDF2ED1ED6D17700E86618 /* MapGrid.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MapGrid.framework;
+			remoteRef = 2BCDF2EC1ED6D17700E86618 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2BCDF2EF1ED6D17700E86618 /* MapGridTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MapGridTests.xctest;
+			remoteRef = 2BCDF2EE1ED6D17700E86618 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BCDF2D01ED6D10600E86618 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BCDF2E01ED6D10600E86618 /* LaunchScreen.storyboard in Resources */,
+				2BCDF2DD1ED6D10600E86618 /* Assets.xcassets in Resources */,
+				2BCDF2DB1ED6D10600E86618 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BCDF2CE1ED6D10600E86618 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BCDF2D81ED6D10600E86618 /* ViewController.swift in Sources */,
+				2BCDF2D61ED6D10600E86618 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2BCDF2F41ED6D1BB00E86618 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapGrid;
+			targetProxy = 2BCDF2F31ED6D1BB00E86618 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2BCDF2D91ED6D10600E86618 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BCDF2DA1ED6D10600E86618 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2BCDF2DE1ED6D10600E86618 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BCDF2DF1ED6D10600E86618 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2BCDF2E21ED6D10600E86618 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2BCDF2E31ED6D10600E86618 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BCDF2E51ED6D10600E86618 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MapGridExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.MapGridExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2BCDF2E61ED6D10600E86618 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MapGridExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.MapGridExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BCDF2CD1ED6D10600E86618 /* Build configuration list for PBXProject "MapGridExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BCDF2E21ED6D10600E86618 /* Debug */,
+				2BCDF2E31ED6D10600E86618 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BCDF2E41ED6D10600E86618 /* Build configuration list for PBXNativeTarget "MapGridExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BCDF2E51ED6D10600E86618 /* Debug */,
+				2BCDF2E61ED6D10600E86618 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2BCDF2CA1ED6D10600E86618 /* Project object */;
+}

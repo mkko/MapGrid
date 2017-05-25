@@ -1,15 +1,15 @@
 //
-//  GridExampleTests.swift
-//  GridExampleTests
+//  MapGridTests.swift
+//  MapGridTests
 //
-//  Created by Mikko Välimäki on 17-05-15.
+//  Created by Mikko Välimäki on 17-05-25.
 //  Copyright © 2017 Mikko Välimäki. All rights reserved.
 //
 
 import XCTest
-@testable import GridExample
+@testable import MapGrid
 
-class GridExampleTests: XCTestCase {
+class MapGridTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

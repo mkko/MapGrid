@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  GridExample
+//  MapGridExample
 //
 //  Created by Mikko Välimäki on 17-05-15.
 //  Copyright © 2017 Mikko Välimäki. All rights reserved.
@@ -8,20 +8,20 @@
 
 import UIKit
 import MapKit
-import Grid
+import MapGrid
 
 struct Tile {
     let overlay: MKOverlay
 }
 
 class ViewController: UIViewController {
-    
+        
     var regionOverlay = MKPolygon(region: MKCoordinateRegion())
-
+    
     func value<Int>(forMapIndex mapIndex: MapIndex) -> Int {
         return 0 as! Int
     }
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     var grid = MapGrid<Tile>(tileSize: 100000 /* meters */, factory: CustomTileFactory())
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,7 +53,7 @@ extension ViewController: MKMapViewDelegate {
         
         let newOverlays = update.newTiles.map { $0.item.overlay }
         mapView.addOverlays(newOverlays)
-
+        
         let removedOverlays = update.removedTiles.map { $0.item.overlay }
         mapView.removeOverlays(removedOverlays)
     }
@@ -67,7 +67,7 @@ extension ViewController: MKMapViewDelegate {
                     latitudeDelta: mapView.region.span.latitudeDelta / 2.0,
                     longitudeDelta: mapView.region.span.longitudeDelta / 2.0))
     }
-
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolygonRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.magenta
