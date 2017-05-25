@@ -71,21 +71,11 @@ extension ViewController: MKMapViewDelegate {
         print("\(mapView.currentMetersPerPoint)")
         let region = getRegion(mapView: mapView)
         
-        // Update the
-//        mapView.remove(regionOverlay)
-//        self.regionOverlay = MKPolygon(region: region)
-//        mapView.add(regionOverlay)
-        
         // Update the grid.
         let update = grid.update(visibleRegion: region)
         print("update: +\(update.newTiles.count) -\(update.removedTiles.count)")
         
-//        let newOverlays = update.newTiles.map { $0.item.overlay }
         mapView.addAnnotations(update.newTiles.flatMap { $0.item.cities })
-        //mapView.addOverlays(newOverlays)
-        
-//        let removedOverlays = update.removedTiles.map { $0.item.overlay }
-        //mapView.removeOverlays(removedOverlays)
         mapView.removeAnnotations(update.removedTiles.flatMap { $0.item.cities })
     }
     
@@ -178,13 +168,16 @@ func loadCities() -> [City] {
             let data = try String(contentsOfFile: path, encoding: .utf8)
             let cities = data.components(separatedBy: .newlines).flatMap { line -> City? in
                 let csv = line.components(separatedBy: ",")
-                guard csv.count > 3, let lat = Double(csv[2]), let lon = Double(csv[3]) else {
+                guard csv.count > 3,
+                    let lat = Double(csv[2]),
+                    let lon = Double(csv[3]),
+                    let pop = Int(csv[4]) else {
                     print("Skipping line: \(line)")
                     return nil
                 }
                 let name = csv[0]
                 let coord = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                return City(title: name, coordinate: coord, population: 0)
+                return City(title: name, coordinate: coord, population: pop)
             }
             return cities
         } catch {
