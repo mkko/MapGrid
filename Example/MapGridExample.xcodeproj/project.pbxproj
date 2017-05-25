@@ -12,6 +12,7 @@
 		2BCDF2DB1ED6D10600E86618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2D91ED6D10600E86618 /* Main.storyboard */; };
 		2BCDF2DD1ED6D10600E86618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2DC1ED6D10600E86618 /* Assets.xcassets */; };
 		2BCDF2E01ED6D10600E86618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2DE1ED6D10600E86618 /* LaunchScreen.storyboard */; };
+		2BCDF2FF1ED6F81E00E86618 /* simplemaps-worldcities-basic.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2FE1ED6F81E00E86618 /* simplemaps-worldcities-basic.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		2BCDF2DF1ED6D10600E86618 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BCDF2E11ED6D10600E86618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapGrid.xcodeproj; path = ../MapGrid.xcodeproj; sourceTree = "<group>"; };
+		2BCDF2FE1ED6F81E00E86618 /* simplemaps-worldcities-basic.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "simplemaps-worldcities-basic.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				2BCDF2D91ED6D10600E86618 /* Main.storyboard */,
 				2BCDF2DC1ED6D10600E86618 /* Assets.xcassets */,
 				2BCDF2DE1ED6D10600E86618 /* LaunchScreen.storyboard */,
+				2BCDF2FE1ED6F81E00E86618 /* simplemaps-worldcities-basic.csv */,
 				2BCDF2E11ED6D10600E86618 /* Info.plist */,
 			);
 			path = MapGridExample;
@@ -182,6 +185,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BCDF2FF1ED6F81E00E86618 /* simplemaps-worldcities-basic.csv in Resources */,
 				2BCDF2E01ED6D10600E86618 /* LaunchScreen.storyboard in Resources */,
 				2BCDF2DD1ED6D10600E86618 /* Assets.xcassets in Resources */,
 				2BCDF2DB1ED6D10600E86618 /* Main.storyboard in Resources */,
