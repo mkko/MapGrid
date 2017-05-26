@@ -13,6 +13,8 @@
 		2BCDF2DD1ED6D10600E86618 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2DC1ED6D10600E86618 /* Assets.xcassets */; };
 		2BCDF2E01ED6D10600E86618 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2DE1ED6D10600E86618 /* LaunchScreen.storyboard */; };
 		2BCDF2FF1ED6F81E00E86618 /* simplemaps-worldcities-basic.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2BCDF2FE1ED6F81E00E86618 /* simplemaps-worldcities-basic.csv */; };
+		2BCDF3011ED70F1B00E86618 /* MapGrid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCDF2ED1ED6D17700E86618 /* MapGrid.framework */; };
+		2BCDF3021ED70F1B00E86618 /* MapGrid.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCDF2ED1ED6D17700E86618 /* MapGrid.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,28 @@
 			remoteGlobalIDString = 2BCDF2AE1ED6D0AA00E86618;
 			remoteInfo = MapGrid;
 		};
+		2BCDF3031ED70F1B00E86618 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BCDF2E71ED6D17700E86618 /* MapGrid.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BCDF2AE1ED6D0AA00E86618;
+			remoteInfo = MapGrid;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2BCDF3051ED70F1B00E86618 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2BCDF3021ED70F1B00E86618 /* MapGrid.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2BCDF2D21ED6D10600E86618 /* MapGridExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapGridExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BCDF3011ED70F1B00E86618 /* MapGrid.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,11 +136,13 @@
 				2BCDF2CE1ED6D10600E86618 /* Sources */,
 				2BCDF2CF1ED6D10600E86618 /* Frameworks */,
 				2BCDF2D01ED6D10600E86618 /* Resources */,
+				2BCDF3051ED70F1B00E86618 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				2BCDF2F41ED6D1BB00E86618 /* PBXTargetDependency */,
+				2BCDF3041ED70F1B00E86618 /* PBXTargetDependency */,
 			);
 			name = MapGridExample;
 			productName = MapGridExample;
@@ -135,6 +161,7 @@
 				TargetAttributes = {
 					2BCDF2D11ED6D10600E86618 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = RMSZZMU29R;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -211,6 +238,11 @@
 			isa = PBXTargetDependency;
 			name = MapGrid;
 			targetProxy = 2BCDF2F31ED6D1BB00E86618 /* PBXContainerItemProxy */;
+		};
+		2BCDF3041ED70F1B00E86618 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapGrid;
+			targetProxy = 2BCDF3031ED70F1B00E86618 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -332,7 +364,9 @@
 		2BCDF2E51ED6D10600E86618 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RMSZZMU29R;
 				INFOPLIST_FILE = MapGridExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.MapGridExample;
@@ -344,7 +378,9 @@
 		2BCDF2E61ED6D10600E86618 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RMSZZMU29R;
 				INFOPLIST_FILE = MapGridExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikkovalimaki.MapGridExample;

@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import MapGrid
 
+// Turn this on if you want compare to all annotations on
+// the map at once.
 let GRID_BASED_LOADING = true
 
 class City: NSObject, MKAnnotation {
@@ -36,13 +38,9 @@ struct Tile {
 
 class ViewController: UIViewController {
         
-    var regionOverlay = MKPolygon(region: MKCoordinateRegion())
-    
-    func value<Int>(forMapIndex mapIndex: MapIndex) -> Int {
-        return 0 as! Int
-    }
-    
     @IBOutlet weak var mapView: MKMapView!
+    
+    let queue = DispatchQueue(label: "com.mikkovalimaki.MapUpdateQueue")
     
     var grid = MapGrid<Tile>(tileSize: 100000 /* meters */, factory: CustomTileFactory(cities: loadCities()))
     
