@@ -104,9 +104,8 @@ public class MapGrid<T> {
         var newTiles = [MapTile<T>]()
         for gridIndex in visibleGridIndices {
             let mapIndex = MapIndex(index: gridIndex)
-            // FIXME: Don't cast.
-            let item: T? = self.factory.value(forMapIndex: mapIndex, inMapGrid: self)
-            let tile = MapTile(mapIndex: mapIndex, item: item!)
+            let item = self.factory.value(forMapIndex: mapIndex, inMapGrid: self)
+            let tile = MapTile(mapIndex: mapIndex, item: item)
             newTiles.append(tile)
             grid[gridIndex] = tile
         }
