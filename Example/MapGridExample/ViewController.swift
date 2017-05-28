@@ -39,10 +39,12 @@ struct Tile {
 class ViewController: UIViewController {
         
     @IBOutlet weak var mapView: MKMapView!
-    
+
+    var regionOverlay = MKPolygon(region: MKCoordinateRegion())
+
     let queue = DispatchQueue(label: "com.mikkovalimaki.MapUpdateQueue")
     
-    var grid = MapGrid<Tile>(tileSize: 100000 /* meters */, factory: CustomTileFactory(cities: loadCities()))
+    var grid = MapGrid<Tile>(tileSize: 100000 /* meters */)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,26 +67,40 @@ extension ViewController: MKMapViewDelegate {
         if !GRID_BASED_LOADING {
             return
         }
-        
+
         print("\(mapView.currentMetersPerPoint)")
-        let region = getRegion(mapView: mapView)
+        let visibleRegion = getVisibleRegion(mapView: mapView)
+        
+        mapView.remove(regionOverlay)
+        self.regionOverlay = MKPolygon(region: visibleRegion)
+        mapView.add(regionOverlay)
+
+        let removedTiles = grid.crop(toRegion: visibleRegion)
+        
+        let newTiles = grid.fill(toRegion: visibleRegion) { mapIndex, item in
+            let tileRegion = grid.region(at: mapIndex)
+            return Tile(cities: [], overlay: MKPolygon(region: tileRegion))
+        }
         
         // Update the grid.
-        let update = grid.update(visibleRegion: region)
-        print("update: +\(update.newTiles.count) -\(update.removedTiles.count)")
+//        let update = grid.clip(toRegion: region, newTile: (MapIndex, MapGrid<Tile>) -> Tile)
+        print("update: +\(newTiles.count) -\(removedTiles.count)")
         
-        mapView.addAnnotations(update.newTiles.flatMap { $0.item.cities })
-        mapView.removeAnnotations(update.removedTiles.flatMap { $0.item.cities })
+        mapView.addAnnotations(newTiles.flatMap { $0.item.cities })
+        mapView.removeAnnotations(removedTiles.flatMap { $0.item.cities })
+        
+        mapView.addOverlays(newTiles.map { $0.item.overlay })
+        mapView.removeOverlays(removedTiles.map { $0.item.overlay })
     }
     
-    func getRegion(mapView: MKMapView) -> MKCoordinateRegion {
+    func getVisibleRegion(mapView: MKMapView) -> MKCoordinateRegion {
         return mapView.currentMetersPerPoint > 2000
             ? MKCoordinateRegion()
             : MKCoordinateRegion(
                 center: mapView.region.center,
                 span: MKCoordinateSpan(
-                    latitudeDelta: mapView.region.span.latitudeDelta,
-                    longitudeDelta: mapView.region.span.longitudeDelta))
+                    latitudeDelta: mapView.region.span.latitudeDelta / 2.0,
+                    longitudeDelta: mapView.region.span.longitudeDelta / 2.0))
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -97,22 +113,27 @@ extension ViewController: MKMapViewDelegate {
 
 class CustomTileFactory: TileFactory<Tile> {
     
-    let cities: [City]
+    //let cities: [City]
+    
+    var cities = MapGrid<[City]>(tileSize: 5000)
     
     init(cities: [City]) {
-        self.cities = cities
+        for city in cities {
+            self.cities.tile(atCoordinates: city.coordinate)
+        }
+//        self.cities = cities
     }
     
     override func value(forMapIndex mapIndex: MapIndex, inMapGrid mapGrid: MapGrid<Tile>) -> Tile {
         let region = mapGrid.region(at: mapIndex)
         let bounds = region.bounds
-        let cities = self.cities.filter { city in
-            let p = city.coordinate
-            return
-                p.latitude < bounds.ne.latitude && p.latitude > bounds.se.latitude &&
-                p.longitude < bounds.ne.longitude && p.longitude > bounds.nw.longitude
-        }
-        return Tile(cities: cities, overlay: MKPolygon(region: region))
+//        let cities = self.cities.filter { city in
+//            let p = city.coordinate
+//            return
+//                p.latitude < bounds.ne.latitude && p.latitude > bounds.se.latitude &&
+//                p.longitude < bounds.ne.longitude && p.longitude > bounds.nw.longitude
+//        }
+        return Tile(cities: [], overlay: MKPolygon(region: region))
     }
 }
 
