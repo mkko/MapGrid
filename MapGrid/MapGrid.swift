@@ -93,11 +93,6 @@ public struct MapGrid<T> {
 // MARK: - Mutable
 extension MapGrid {
     
-    public mutating func clip(toRegion region: MKCoordinateRegion, newTile: (MapIndex, MapGrid<T>) -> T) -> TileDelta<T> {
-        let gridIndices = region.getGridRect(withOrigin: self.regionOfOrigin).map { MapIndex(index: $0) }
-        return clip(toIndices: gridIndices, newTile: newTile)
-    }
-    
     /**
      Fill the map to cover given region. Will return newly created tiles.
      */
@@ -136,42 +131,6 @@ extension MapGrid {
         self.grid = newGrid
         
         return removedTiles
-    }
-
-    /**
-     Load tiles for the given indices. Returns the delta.
-     */
-    private mutating func clip(toIndices remainingIndices: [MapIndex], newTile: (MapIndex, MapGrid<T>) -> T) -> TileDelta<T> {
-        
-        // TODO: Could be improved in performance.
-        var visibleGridIndices = remainingIndices.map { $0.index }
-        var existingTiles = [MapTile<T>]()
-        var removedTiles = [MapTile<T>]()
-        
-        // Check the existing ones first.
-        for (index, mapTile) in grid.getTiles() {
-            if let i = visibleGridIndices.index(of: index) {
-                // The tile exists.
-                visibleGridIndices.remove(at: i)
-                existingTiles.append(mapTile)
-            } else {
-                // The tile doesn't exist, so remove it.
-                grid.remove(index: index)
-                removedTiles.append(mapTile)
-            }
-        }
-        
-        // Remaining visible indices should be new.
-        var newTiles = [MapTile<T>]()
-        for gridIndex in visibleGridIndices {
-            let mapIndex = MapIndex(index: gridIndex)
-            let item = newTile(mapIndex, self)
-            let tile = MapTile(mapIndex: mapIndex, item: item)
-            newTiles.append(tile)
-            grid[gridIndex] = tile
-        }
-        
-        return TileDelta(newTiles: newTiles, removedTiles: removedTiles)
     }
 }
 
