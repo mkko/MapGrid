@@ -201,7 +201,24 @@ private extension MKCoordinateRegion {
     }
     
     func containsIndex(_ index: GridIndex, withOrigin origin: MKCoordinateRegion) -> Bool {
-        return false
+        let indexRegion = index.getRegion(forOrigin: origin)
+        return self.overlapsWith(indexRegion)
+    }
+    
+    func overlapsWith(_ region: MKCoordinateRegion) -> Bool {
+        let rectA = self.bounds()
+        let rectB = region.bounds()
+        return (rectA.west < rectB.east && rectA.east > rectB.west &&
+            rectA.north > rectB.south && rectA.south < rectB.north )
+    }
+    
+    private func bounds() -> (north: CLLocationDegrees, east: CLLocationDegrees, south: CLLocationDegrees, west: CLLocationDegrees) {
+        return (
+            north: (self.center.latitude + self.span.latitudeDelta / 2.0),
+            south: (self.center.latitude - self.span.latitudeDelta / 2.0),
+            east: (self.center.longitude + self.span.longitudeDelta / 2.0),
+            west: (self.center.longitude - self.span.longitudeDelta / 2.0)
+        )
     }
 
 }
