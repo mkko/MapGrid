@@ -65,20 +65,58 @@ public struct MapGrid<T> {
     
     // MARK: Indexing
     
-    public func tiles(atRegion region: MKCoordinateRegion) -> [MapTile<T>] {
-        let gridIndices = region.getGridRect(withOrigin: self.regionOfOrigin)
-        return gridIndices.flatMap { self.grid[$0] }
+//    public func tiles(atRegion region: MKCoordinateRegion) -> [MapTile<T>] {
+//        let gridIndices = region.getGridRect(withOrigin: self.regionOfOrigin)
+//        return gridIndices.flatMap { self.grid[$0] }
+//    }
+    
+//    public mutating func tile(atCoordinates coordinate: CLLocationCoordinate2D, newTile: (MapIndex, MapGrid<T>) -> T) -> MapTile<T> {
+//        let mapIndex = getIndex(forCoordinate: coordinate, withOrigin: self.regionOfOrigin)
+//        if let tile = self.grid[mapIndex.index] {
+//            return tile
+//        } else {
+//            let gridIndex = coordinate.getGridIndex(withOrigin: self.regionOfOrigin)
+//            let mapIndex = MapIndex(index: gridIndex)
+//            let item = newTile(mapIndex, self)
+//            let tile = MapTile(mapIndex: mapIndex, item: item)
+//            grid[gridIndex] = tile
+//            return tile
+//        }
+//    }
+    
+    public subscript(mapIndex: MapIndex) -> T? {
+        get {
+            return self.grid[mapIndex.index]?.item
+        }
+        set {
+            if let item = newValue {
+                self.grid[mapIndex.index] = MapTile<T>(mapIndex: mapIndex, item: item)
+            } else {
+                self.grid[mapIndex.index] = nil
+            }
+        }
     }
     
-    public func tile(atCoordinates coordinate: CLLocationCoordinate2D) -> MapTile<T>? {
+    public func tile(atCoordinates coordinate: CLLocationCoordinate2D) -> T? {
         let mapIndex = getIndex(forCoordinate: coordinate, withOrigin: self.regionOfOrigin)
-        return self.grid[mapIndex.index]
+        return self.grid[mapIndex.index]?.item
+    }
+    
+    public func tiles(atRegion region: MKCoordinateRegion) -> [T] {
+        let gridIndices = region.getGridRect(withOrigin: self.regionOfOrigin)
+        return gridIndices.flatMap { gridIndex -> T? in
+            return self.grid[gridIndex]?.item
+        }
     }
 
     // MARK: Public
     
     public func region(at mapIndex: MapIndex) -> MKCoordinateRegion {
         return mapIndex.index.getRegion(forOrigin: self.regionOfOrigin)
+    }
+    
+    public func indexForCoordinate(_ coordinate: CLLocationCoordinate2D) -> MapIndex {
+        return getIndex(forCoordinate: coordinate, withOrigin: self.regionOfOrigin)
     }
     
     // MARK: Privates
@@ -179,7 +217,22 @@ private extension MKCoordinateRegion {
             west: (self.center.longitude - self.span.longitudeDelta / 2.0)
         )
     }
+}
 
+private extension CLLocationCoordinate2D {
+    
+    func getGridIndex(withOrigin origin: MKCoordinateRegion) -> GridIndex {
+        let latd = origin.center.latitude - origin.span.latitudeDelta / 2.0
+        let lond = origin.center.longitude - origin.span.longitudeDelta / 2.0
+        
+        let lat = self.latitude - latd
+        let lon = self.longitude - lond
+        
+        let y = Int(floor(lat / origin.span.latitudeDelta))
+        let x = Int(floor(lon / origin.span.longitudeDelta))
+        
+        return GridIndex(x: x, y: y)
+    }
 }
 
 private extension GridIndex {
