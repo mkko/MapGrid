@@ -12,41 +12,51 @@ MapGrid is a grid data structure that can be used as an abstraction over the map
 
 You initialize a MapGrid by providing what kind of tiles it will hold and a factory to create these tiles. You also need to give the size of the tile. This applies only at the grid origin which is currently set to be at zero coordinates.
 
-    var grid = MapGrid<CustomData>(tileSize: 100000 /* meters */, factory: CustomTileFactory())
+    var grid = MapGrid<Tile>(tileSize: 100000 /* meters */)
 
-Here is an example of a factory.
+And here's an example on how to use it. 
 
 ```
-class CustomTileFactory: TileFactory<CustomTile> {
+func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+
+    let visibleRegion = mapView.region
+    let removedTiles = grid.crop(toRegion: visibleRegion)
+    let newTiles = grid.fill(toRegion: visibleRegion, newTile: self.createTile)
+    print("update: +\(newTiles.count) -\(removedTiles.count)")
     
-    override func value(forMapIndex mapIndex: MapIndex, inMapGrid mapGrid: MapGrid<Tile>) -> CustomTile {
-        let region = mapGrid.region(at: mapIndex)
-        /* Here you would provide data, such as annotations for the tile */
-        return CustomTile(...)
-    }
+    mapView.addAnnotations(newTiles.flatMap { $0.item.cities })
+    mapView.removeAnnotations(removedTiles.flatMap { $0.item.cities })
 }
-```
-
-Finally you call `update(visibleRegion:)` to get new tiles for the given region. The new tiles you need to add to the map. This will also give you tiles that were removed from the grid and it is up to you to remove the contents of these tiles from the map.
-
-This code snippet is from the example project.
-
-```
-let update = grid.update(visibleRegion: region)
-print("update: +\(update.newTiles.count) -\(update.removedTiles.count)")
-
-let newOverlays = update.newTiles.map { $0.item.overlay }
-mapView.addOverlays(newOverlays)
-
-let removedOverlays = update.removedTiles.map { $0.item.overlay }
-mapView.removeOverlays(removedOverlays)
 ```
 
 And that's it! With MapGrid you only need to deal with the logic of handling new and removed tiles.
 
+For the sake of completeness here's the setup:
+
+```
+struct Tile {
+    let cities: [City]
+}
+
+func createTile(mapIndex: MapIndex, mapGrid: MapGrid<Tile>) -> Tile {
+    let region = mapGrid.region(at: mapIndex)
+    let cities = /* Get the cities for the region here */
+    return Tile(cities: cities)
+}
+```
+
+### Filling
+
+With the grid you call `fill(toRegion:newTile:)` to get new tiles for the given region. As a result, you only get newly created tiles back and you need to update the UI with these tiles.
+
+### Cropping
+
+To remove tiles from the grid you use `crop(toRegion:)`. This will give you tiles that were removed from the grid and it is up to you to remove the contents of these tiles from the map.
+
 
 # TODO:
 
-- Better example with annotations
 - Provide the origin in initialization
+- Implement animations for the demo
+- Tests
 

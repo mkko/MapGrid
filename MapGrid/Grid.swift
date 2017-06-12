@@ -34,7 +34,7 @@ extension GridIndex: Hashable {
     }
 }
 
-class Grid<T> {
+struct Grid<T> {
     
     //private var rows = ExpandingCollection<ExpandingCollection<T>>()
     //private var indices = [GridIndex: T]()
@@ -81,11 +81,11 @@ class Grid<T> {
         }
     }
     
-    func remove(index: GridIndex) {
+    mutating func remove(index: GridIndex) {
         self[index] = nil
     }
     
-    func remove(indices: [GridIndex]) {
+    mutating func remove(indices: [GridIndex]) {
         for index in indices {
             remove(index: index)
         }
