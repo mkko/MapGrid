@@ -62,11 +62,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
 extension ViewController: MKMapViewDelegate {
@@ -82,7 +77,7 @@ extension ViewController: MKMapViewDelegate {
         if !GRID_BASED_LOADING {
             return
         }
-
+        
         let visibleRegion = getVisibleRegion(mapView: mapView)
         
         mapView.remove(regionOverlay)
@@ -106,7 +101,7 @@ extension ViewController: MKMapViewDelegate {
     }
     
     func getVisibleRegion(mapView: MKMapView) -> MKCoordinateRegion {
-        return mapView.currentMetersPerPoint > 2000
+        return mapView.zoomLevel > 13
             ? MKCoordinateRegion()
             : MKCoordinateRegion(
                 center: mapView.region.center,
@@ -153,16 +148,8 @@ extension MKPolygon {
 
 extension MKMapView {
     
-    var currentMetersPerPoint: CLLocationDistance {
-        guard self.bounds.width > 0 else {
-            return 0
-        }
-        let loc1 = CLLocation(latitude: self.region.center.latitude,
-                              longitude: (region.center.longitude - region.span.longitudeDelta * 0.5))
-        let loc2 = CLLocation(latitude: self.region.center.latitude,
-                              longitude: (region.center.longitude + region.span.longitudeDelta * 0.5))
-        let latitudinalDistance = loc1.distance(from: loc2)
-        return latitudinalDistance / CLLocationDistance(self.bounds.width)
+    var zoomLevel: Int {
+        return Int(log2(self.visibleMapRect.size.width)) - 9
     }
 }
 
