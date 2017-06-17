@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 import MapGrid
 
-// Turn this on if you want compare to all annotations on
-// the map at once.
+// Turn this on if you want compare to displaying all annotations
+// on the map at once. Makes a bigger difference with more annotations.
 let GRID_BASED_LOADING = true
 
 class City: NSObject, MKAnnotation {
@@ -55,7 +55,6 @@ class ViewController: UIViewController {
             mapView.addAnnotations(loadCities())
         } else {
             for city in loadCities() {
-                //let tile = self.cityMap.tile(atCoordinates: city.coordinate)
                 let mapIndex = self.cityMap.indexForCoordinate(city.coordinate)
                 var tile = self.cityMap[mapIndex] ?? [City]()
                 tile.append(city)
@@ -84,19 +83,20 @@ extension ViewController: MKMapViewDelegate {
             return
         }
 
-        print("\(mapView.currentMetersPerPoint)")
         let visibleRegion = getVisibleRegion(mapView: mapView)
         
         mapView.remove(regionOverlay)
         self.regionOverlay = MKPolygon(region: visibleRegion)
         mapView.add(regionOverlay)
-
-        let removedTiles = grid.crop(toRegion: visibleRegion)
         
+        // Crop and fill the grid.
+        
+        let removedTiles = grid.crop(toRegion: visibleRegion)
         let newTiles = grid.fill(toRegion: visibleRegion, newTile: self.createTile)
-        // Update the grid.
-//        let update = grid.clip(toRegion: region, newTile: (MapIndex, MapGrid<Tile>) -> Tile)
+
         print("update: +\(newTiles.count) -\(removedTiles.count)")
+
+        // Update the map.
         
         mapView.addAnnotations(newTiles.flatMap { $0.item.cities })
         mapView.removeAnnotations(removedTiles.flatMap { $0.item.cities })
@@ -122,41 +122,6 @@ extension ViewController: MKMapViewDelegate {
         return renderer
     }
 }
-
-//class CustomTileFactory: TileFactory<Tile> {
-//    
-//    //let cities: [City]
-//    
-//    var cityMap = MapGrid<[City]>(tileSize: 5000)
-//    
-//    init(cities: [City]) {
-//        for city in cities {
-//            //let tile = self.cityMap.tile(atCoordinates: city.coordinate)
-//            let mapIndex = self.cityMap.indexForCoordinate(coordinate: city.coordinate)
-//            var tile = self.cityMap[mapIndex] ?? [City]()
-//            tile.append(city)
-//            self.cityMap[mapIndex] = tile
-//            
-////            self.cityMap.updateTile(atCoordinates: city.coordinate) { tile in
-////                tile.item.append(city)
-////            }
-//        }
-////        self.cities = cities
-//        
-//    }
-//    
-//    override func value(forMapIndex mapIndex: MapIndex, inMapGrid mapGrid: MapGrid<Tile>) -> Tile {
-//        let region = mapGrid.region(at: mapIndex)
-//        let bounds = region.bounds
-////        let cities = self.cities.filter { city in
-////            let p = city.coordinate
-////            return
-////                p.latitude < bounds.ne.latitude && p.latitude > bounds.se.latitude &&
-////                p.longitude < bounds.ne.longitude && p.longitude > bounds.nw.longitude
-////        }
-//        return Tile(cities: [], overlay: MKPolygon(region: region))
-//    }
-//}
 
 extension MKCoordinateRegion {
     
@@ -213,7 +178,7 @@ func loadCities() -> [City] {
                     let lat = Double(csv[2]),
                     let lon = Double(csv[3]),
                     let pop = Double(csv[4]) else {
-                    print("Skipping line: \(line)")
+                    print("WARNING: Skipping line: \(line)")
                     return nil
                 }
                 let name = csv[0]

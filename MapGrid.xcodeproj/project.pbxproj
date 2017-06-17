@@ -11,7 +11,6 @@
 		2BCDF2BE1ED6D0AA00E86618 /* MapGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDF2BD1ED6D0AA00E86618 /* MapGridTests.swift */; };
 		2BCDF2C01ED6D0AA00E86618 /* MapGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCDF2B21ED6D0AA00E86618 /* MapGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2BCDF2F81ED6D20700E86618 /* MapGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDF2F51ED6D20700E86618 /* MapGrid.swift */; };
-		2BCDF2F91ED6D20700E86618 /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDF2F61ED6D20700E86618 /* TileFactory.swift */; };
 		2BCDF2FA1ED6D20700E86618 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDF2F71ED6D20700E86618 /* Grid.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +32,6 @@
 		2BCDF2BD1ED6D0AA00E86618 /* MapGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGridTests.swift; sourceTree = "<group>"; };
 		2BCDF2BF1ED6D0AA00E86618 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BCDF2F51ED6D20700E86618 /* MapGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapGrid.swift; sourceTree = "<group>"; };
-		2BCDF2F61ED6D20700E86618 /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
 		2BCDF2F71ED6D20700E86618 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				2BCDF2F51ED6D20700E86618 /* MapGrid.swift */,
-				2BCDF2F61ED6D20700E86618 /* TileFactory.swift */,
 				2BCDF2F71ED6D20700E86618 /* Grid.swift */,
 				2BCDF2B21ED6D0AA00E86618 /* MapGrid.h */,
 				2BCDF2B31ED6D0AA00E86618 /* Info.plist */,
@@ -206,7 +203,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BCDF2F91ED6D20700E86618 /* TileFactory.swift in Sources */,
 				2BCDF2F81ED6D20700E86618 /* MapGrid.swift in Sources */,
 				2BCDF2FA1ED6D20700E86618 /* Grid.swift in Sources */,
 			);
