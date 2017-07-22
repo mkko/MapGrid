@@ -2,14 +2,13 @@ import XCTest
 @testable import MapGrid
 
 class MapGridTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(MapGrid().text, "Hello, World!")
+    
+    func testConstruct() {
+        _ = MapGrid<String>(tileSize: 200)
+        
     }
-
-
+    
     static var allTests = [
-        ("testExample", testExample),
-    ]
+        ("testConstruct", testConstruct),
+        ]
 }
