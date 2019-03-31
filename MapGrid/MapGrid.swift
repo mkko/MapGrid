@@ -104,7 +104,7 @@ public struct MapGrid<T> {
     
     public func tiles(atRegion region: MKCoordinateRegion) -> [T] {
         let gridIndices = region.getGridRect(withOrigin: self.regionOfOrigin)
-        return gridIndices.flatMap { gridIndex -> T? in
+        return gridIndices.compactMap { gridIndex -> T? in
             return self.grid[gridIndex]?.item
         }
     }
@@ -122,9 +122,9 @@ public struct MapGrid<T> {
     // MARK: Privates
     
     var regionOfOrigin: MKCoordinateRegion {
-        return MKCoordinateRegionMakeWithDistance(
-            CLLocationCoordinate2D(latitude: 0, longitude: 0),
-            tileLatitudinalSize, tileLongitudinalSize)
+        return MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+            latitudinalMeters: tileLatitudinalSize, longitudinalMeters: tileLongitudinalSize)
     }
 }
 
@@ -136,7 +136,7 @@ extension MapGrid {
      */
     public mutating func fill(toRegion region: MKCoordinateRegion, newTile: (MapIndex, MapGrid<T>) -> T) -> [MapTile<T>] {
         let gridIndices = region.getGridRect(withOrigin: self.regionOfOrigin)
-        let newTiles = gridIndices.flatMap { (gridIndex) -> MapTile<T>? in
+        let newTiles = gridIndices.compactMap { (gridIndex) -> MapTile<T>? in
             if !self.grid.contains(index: gridIndex) {
                 let mapIndex = MapIndex(index: gridIndex)
                 let item = newTile(mapIndex, self)
